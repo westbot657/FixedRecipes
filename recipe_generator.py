@@ -58,7 +58,7 @@ wood_specific_recipes = [
     lambda t: createShapedRecipeVS(f"{t}_trapdoor", ["###", "###"], {"#": {"item": f"minecraft:{t}_planks"}}, f"{t}_trapdoor", 32, 32),
     lambda t: createShapedRecipeVS(f"{t}_door", ["##", "##", "##"], {"#": {"item": f"minecraft:{t}_planks"}}, f"{t}_door", 16, 16),
     # 11 x 16 x 2
-    lambda t: createShapedRecipeVS(f"{t}_gate", ["|#|", "|#|"], {"#": {"item": f"minecraft:{t}_gate"}}, f"{t}_gate", , )
+    lambda t: createShapedRecipeVS(f"{t}_gate", ["|#|", "|#|"], {"#": {"item": f"minecraft:{t}_gate"}}, f"{t}_gate", 1, 1)
 ]
 
 
