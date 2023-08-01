@@ -1,151 +1,127 @@
 # pylint: disable=[W,R,C,import-error]
 
-def createShapelessRecipe(name:str, ingredients:list, result:str, count:int):
-    recipe = {
-        "type": "crafting_shapeless",
-        "ingredients": [
-            {"item": f"minecraft:{item}"} for item in ingredients
-        ],
-        "result": {
-            "item": f"minecraft:{result}",
-            "count": count
-        }
-    }
+import re, json
 
-def createShapedRecipe(name:str, pattern:list[str], key:dict, result:str, count:int):
-    recipe = {
-        "type": "crafting_shaped",
-        "pattern": pattern,
-        "key": key,
-        "result": {
-            "item": f"minecraft:{result}",
-            "count": count
-        }
-    }
+class ShapedRecipe:
 
-def createShapelessRecipeVS(name:str, ingredients:list, result:str, volumetric_count:int, stacking_count:int):
-    createShapelessRecipe(f"generated_volumetric/{name}", ingredients, result, volumetric_count)
-    createShapelessRecipe(f"generated_stacking/{name}", ingredients, result, stacking_count)
+    def __init__(self, shape, key, result, count):
+        self.shape = shape
+        self.key = key
+        self.result = result
+        self.count = count
 
-def createShapedRecipeVS(name:str, pattern:list[str], key:dict, result:str, volumetric_count:int, stacking_count:int):
-    createShapedRecipe(f"generated_volumetric/{name}", pattern, key, result, volumetric_count)
-    createShapedRecipe(f"generated_stacking/{name}", pattern, key, result, stacking_count)
+class ShapelessRecipe:
+    def __init__(self, ingredients, result, count):
+        self.ingredients = ingredients
+        self.result = result
+        self.count = count
 
+class DataIter:
+    def __init__(self, var_names:str, data:list|dict):
+        self.var_names = var_names
+        self.data = data
+        self.active_iter = None
+        self.sub_iter = None
+    
+    def set_sub_iter(self, _iter):
+        if self.sub_iter is None:
+            self.sub_iter = _iter
+        else:
+            self.sub_iter.set_sub_iter(_iter)
 
+    def start(self):
+        if isinstance(self.data, dict):
+            self.active_iter = iter(self.data.items())
+        elif isinstance(self.data, list):
+            self.active_iter = iter(self.data)
+        
+        if self.sub_iter:
+            self.sub_iter.start()
 
+    def next(self, context:dict):
 
-wood_types = [
-    "oak", "birch", "acacia", "dark_oak", "spruce", "cherry",
-    "mangrove", "bamboo", "jungle", "warped", "crimson"
-]
+        if self.sub_iter:
+            try:
+                self.sub_iter.next(context)
+                return
+            except Exception as e:
+                self.sub_iter.start()
 
+        if isinstance(self.data, dict):
+            a, b = self.active_iter.__next__()
+            context[self.var_names[0]] = a
+            context[self.var_names[1]] = b
 
-# Sticks:
-#
-# Stacking:
-# stick: 13x13 pixels every 3
-# 32/3 = 10.666667 = 10  x16 = 160
-# stick recipe = 2 planks = 160 sticks (stacking)
-#
-# Volumetric:
-# 3x11 + 4 = 37 voxels
-# 2 planks (8192 voxels) / 37 = 221.405405... = 221
+        elif isinstance(self.data, list):
+            context[self.var_names[0]] = self.active_iter.__next__()
 
-wood_specific_recipes = [
-    lambda t: createShapelessRecipeVS(f"{t}_planks", [f"{t}_log"], f"{t}_planks", 1, 1),
-    lambda t: createShapedRecipeVS(f"{t}_stairs", ["#  ", "## ", "###"], {"#": {"item": f"minecraft:{t}_planks"}}, f"{t}_stairs", 8, 6),
-    lambda t: createShapelessRecipeVS(f"{t}_button", [f"{t}_planks"], f"{t}_button", 85, 80),
-    lambda t: createShapedRecipeVS(f"{t}_trapdoor", ["###", "###"], {"#": {"item": f"minecraft:{t}_planks"}}, f"{t}_trapdoor", 32, 32),
-    lambda t: createShapedRecipeVS(f"{t}_door", ["##", "##", "##"], {"#": {"item": f"minecraft:{t}_planks"}}, f"{t}_door", 16, 16),
-    # 11 x 16 x 2
-    lambda t: createShapedRecipeVS(f"{t}_gate", ["|#|", "|#|"], {"#": {"item": f"minecraft:{t}_gate"}}, f"{t}_gate", 1, 1)
-]
+class RecipeParser:
 
+    def __init__(self):
+        self.name = ""
+        self.mcmeta = {}
+        self.recipes = []
 
+    def __repr__(self):
+        return f"== {self.name} ==\n{json.dumps(self.mcmeta, indent=2)}\n{len(self.recipes)} recipes"
 
+    def parse(self, file_name:str):
+        with open(file_name, "r+", encoding="utf-8") as f:
+            text = f.read()
+        
+        sections = text.split("----\n")
 
+        pack_data_section = sections.pop(0).strip()
 
+        if m := re.fullmatch(r"== *(?P<name>[a-z0-9_]+) *==\n+// *(?P<description>[A-Za-z0-9_ \-\+=~`!@#\$%\^&\*\(\)\\|[\];:'\",<\.>\?]*) *//\n+f-(?P<format>[0-9]+)", pack_data_section):
+            d = m.groupdict()
+            pack_name = d.get("name")
+            description = d.get("description")
+            format = d.get("format")
 
+            self.name = pack_name
+            self.mcmeta = {
+                "pack": {
+                    "format": int(format),
+                    "description": description
+                }
+            }
 
+        for section in sections:
+            self.parse_section(section)
 
+    def parse_section(self, text:str):
+        if "#ITER" in text:
+            if "#END" not in text:
+                return
+            
+            iters, recipe_data = text.split("#END")
+            iters = iters.strip().split("#ITER")[1:]
+            recipe_data = recipe_data.strip()
 
+            data_iter = None
 
+            for _iter in iters:
+                _names, _data = _iter.split("=")
+                names = [n.strip() for n in _names.split(",") if n.strip()]
+                data = eval(_data.strip())
+                dataIter = DataIter(names, data)
 
+                if data_iter is None:
+                    data_iter = dataIter
+                else:
+                    data_iter.set_sub_iter(dataIter)
 
-"""
-Enchantments:
-
-Unbreaking            - 2 straps
-Mending               - Gold Pages
-
-Looting               - Gold Sword
-Fire Aspect           - Sword with flame
-Sweeping Edge         - Sword with sweeping effect
-Sharpness             - Sword with a sparkle on the tip
-Smite                 - Sword with something withery on the tip
-Bane of Arthropods    - Sword with something spidery on the tip
-Knockback             - Sword with motion ghost
-
-Efficiency            - Pickaxe with motion ghost
-Fortune               - Emerald Pickaxe
-Silk Touch            - Gold Pickaxe
-
-Flame                 - Flaming Arrow
-Punch                 - Arrow with motion ghost
-Power                 - Arrow with gold feathers
-Infinity              - Arrow with gold head
-
-Protection            - Diamond book trim
-Fire Protection       - Firey book trim
-Blast Protection      - blackish book trim
-Projectile Protection - silver book trim
-Thorns                - spikey book cover
-
-Aqua Affinity         - blue helmet?
-Respiration           - Bubbles
-
-Swift Sneak           - Sculk Texture cover
-
-Feather Falling       - Feather
-Soul Speed            - Soul face particle
-Depth Strider         - sea grass
-Frost Walker          - ice
-
-Piercing              - Arrow going through something (probably going through the book)
-Multishot             - More arrows
-Quick Charge          - Arrow in crossbow?
-
-Impaling              - trident going through book
-Riptide               - trident with swirling effect
-Loyalty               - trident with a heart?
-Channeling            - trident with lightning
-
-Curse of Binding      - armor with a lock / just a lock / thicker book
-Curse of Vanishing    - half opacity item?
-
-Lure                  - fish
-Luck of the Sea       - fancy fish
+            
 
 
 
+if __name__ == "__main__":
+    recipeParser = RecipeParser()
 
+    recipeParser.parse("visual_recipes.txt")
 
-
-
-"""
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print(recipeParser)
 
 
 
