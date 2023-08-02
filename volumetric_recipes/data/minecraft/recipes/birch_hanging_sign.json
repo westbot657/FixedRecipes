@@ -1,0 +1,20 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "| |",
+        "###",
+        "###"
+    ],
+    "key": {
+        "|": {
+            "item": "minecraft:chain"
+        },
+        "#": {
+            "item": "minecraft:stripped_birch_log"
+        }
+    },
+    "result": {
+        "item": "minecraft:birch_hanging_sign",
+        "count": 60
+    }
+}

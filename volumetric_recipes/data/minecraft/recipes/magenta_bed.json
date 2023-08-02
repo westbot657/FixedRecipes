@@ -1,0 +1,19 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "www",
+        "###"
+    ],
+    "key": {
+        "w": {
+            "item": "minecraft:magenta_wool"
+        },
+        "#": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:magenta_bed",
+        "count": 6
+    }
+}

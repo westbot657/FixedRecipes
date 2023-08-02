@@ -1,0 +1,19 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "www",
+        "###"
+    ],
+    "key": {
+        "w": {
+            "item": "minecraft:lime_wool"
+        },
+        "#": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:lime_bed",
+        "count": 6
+    }
+}

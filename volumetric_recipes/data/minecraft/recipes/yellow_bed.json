@@ -1,0 +1,19 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "www",
+        "###"
+    ],
+    "key": {
+        "w": {
+            "item": "minecraft:yellow_wool"
+        },
+        "#": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:yellow_bed",
+        "count": 6
+    }
+}

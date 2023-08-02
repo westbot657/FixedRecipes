@@ -1,0 +1,16 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:bamboo_log"
+        }
+    },
+    "result": {
+        "item": "minecraft:bamboo_wood",
+        "count": 4
+    }
+}

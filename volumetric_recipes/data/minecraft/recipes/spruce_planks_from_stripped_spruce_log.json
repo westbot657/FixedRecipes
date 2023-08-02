@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_spruce_log"
+        }
+    ],
+    "result": {
+        "item": "minecraft:spruce_planks",
+        "count": 1
+    }
+}

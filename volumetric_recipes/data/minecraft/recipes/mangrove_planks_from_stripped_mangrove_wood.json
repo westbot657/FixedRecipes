@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_mangrove_wood"
+        }
+    ],
+    "result": {
+        "item": "minecraft:mangrove_planks",
+        "count": 1
+    }
+}

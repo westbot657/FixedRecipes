@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_acacia_wood"
+        }
+    ],
+    "result": {
+        "item": "minecraft:acacia_planks",
+        "count": 1
+    }
+}

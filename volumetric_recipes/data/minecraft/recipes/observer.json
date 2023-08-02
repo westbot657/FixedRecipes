@@ -1,0 +1,23 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "###",
+        "^^q",
+        "###"
+    ],
+    "key": {
+        "^": {
+            "item": "minecraft:redstone"
+        },
+        "q": {
+            "item": "minecraft:quartz"
+        },
+        "#": {
+            "tag": "minecraft:stone_crafting_materials"
+        }
+    },
+    "result": {
+        "item": "minecraft:observer",
+        "count": 6
+    }
+}

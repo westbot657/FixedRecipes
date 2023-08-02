@@ -1,0 +1,23 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        " / ",
+        "/c/",
+        "lll"
+    ],
+    "key": {
+        "c": {
+            "item": "minecraft:charcoal"
+        },
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "l": {
+            "tag": "minecraft:logs"
+        }
+    },
+    "result": {
+        "item": "minecraft:campfire",
+        "count": 12
+    }
+}
