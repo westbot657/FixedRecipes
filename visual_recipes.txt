@@ -1,5 +1,5 @@
 == volumetric_recipes ==
-// revised recipes based mostly on volume //
+// revised recipes based mostly on volume (Created by Westbot) //
 f-15
 ----
 #ITER
