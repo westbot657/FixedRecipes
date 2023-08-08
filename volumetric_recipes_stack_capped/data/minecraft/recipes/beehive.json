@@ -1,0 +1,20 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "###",
+        "@@@",
+        "###"
+    ],
+    "key": {
+        "@": {
+            "item": "minecraft:honeycomb"
+        },
+        "#": {
+            "tag": "minecraft:planks"
+        }
+    },
+    "result": {
+        "item": "minecraft:beehive",
+        "count": 6
+    }
+}

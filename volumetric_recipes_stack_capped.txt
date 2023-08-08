@@ -1,0 +1,932 @@
+== volumetric_recipes_stack_capped ==
+// revised recipes based mostly on volume, output is limited to an item's max stack size (Created by Westbot) //
+f-15
+----
+#ITER
+i, n = {
+    "oak_planks": "oak",
+    "spruce_planks": "spruce",
+    "dark_oak_planks": "dark_oak",
+    "birch_planks": "birch",
+    "jungle_planks": "jungle",
+    "acacia_planks": "acacia",
+    "mangrove_planks": "mangrove",
+    "cherry_planks": "cherry",
+    "bamboo_planks": "bamboo",
+    "bamboo_mosaic": "bamboo_mosaic",
+    "crimson_planks": "crimson",
+    "warped_planks": "warped",
+    "stone": "stone",
+    "cobblestone": "cobblestone",
+    "mossy_cobblestone": "mossy_cobblestone",
+    "stone_bricks": "stone_brick",
+    "mossy_stone_bricks": "mossy_stone_brick",
+    "granite": "granite",
+    "diorite": "diorite",
+    "andesite": "andesite",
+    "cobbled_deepslate": "cobbled_deepslate",
+    "polished_deepslate": "polished_deepslate",
+    "deepslate_bricks": "deepslate_brick",
+    "deepslate_tiles": "deepslate_tile",
+    "bricks": "brick",
+    "mud_bricks": "mud_brick",
+    "sandstone": "sandstone",
+    "smooth_sandstone": "smooth_sandstone",
+    "red_sandstone": "red_sandstone",
+    "smooth_red_sandstone": "smooth_red_sandstone",
+    "prismarine": "prismarine",
+    "prismarine_bricks": "prismarine_brick",
+    "dark_prismarine": "dark_prismarine",
+    "nether_bricks": "nether_brick",
+    "red_nether_bricks": "red_nether_brick",
+    "blackstone": "blackstone",
+    "polished_blackstone": "polished_blackstone",
+    "polished_blackstone_bricks": "polished_blackstone_brick",
+    "end_stone_bricks": "end_stone_brick",
+    "purpur_block": "purpur",
+    "quartz_block": "quartz",
+    "smooth_quartz": "smooth_quartz",
+    "cut_copper": "cut_copper",
+    "exposed_cut_copper": "exposed_cut_copper",
+    "weathered_cut_copper": "weathered_cut_copper",
+    "oxidized_cut_copper": "oxidized_cut_copper",
+    "waxed_cut_copper": "waxed_cut_copper",
+    "waxed_exposed_cut_copper": "waxed_exposed_cut_copper",
+    "waxed_weathered_cut_copper": "waxed_weathered_cut_copper",
+    "waxed_oxidized_cut_copper": "waxed_oxidized_cut_copper",
+    "polished_granite": "polished_granite",
+    "polished_diorite": "polished_diorite",
+    "polished_andesite": "polished_andesite"
+}
+#END
+#DISABLE
+f"{n}_stairs"
+----
+#ITER
+i, n = {
+    "oak_planks": "oak",
+    "spruce_planks": "spruce",
+    "dark_oak_planks": "dark_oak",
+    "birch_planks": "birch",
+    "jungle_planks": "jungle",
+    "acacia_planks": "acacia",
+    "mangrove_planks": "mangrove",
+    "cherry_planks": "cherry",
+    "bamboo_planks": "bamboo",
+    "bamboo_mosaic": "bamboo_mosaic",
+    "crimson_planks": "crimson",
+    "warped_planks": "warped",
+    "stone": "stone",
+    "cobblestone": "cobblestone",
+    "mossy_cobblestone": "mossy_cobblestone",
+    "stone_bricks": "stone_brick",
+    "mossy_stone_bricks": "mossy_stone_brick",
+    "granite": "granite",
+    "diorite": "diorite",
+    "andesite": "andesite",
+    "cobbled_deepslate": "cobbled_deepslate",
+    "polished_deepslate": "polished_deepslate",
+    "deepslate_bricks": "deepslate_brick",
+    "deepslate_tiles": "deepslate_tile",
+    "bricks": "brick",
+    "mud_bricks": "mud_brick",
+    "sandstone": "sandstone",
+    "smooth_sandstone": "smooth_sandstone",
+    "red_sandstone": "red_sandstone",
+    "smooth_red_sandstone": "smooth_red_sandstone",
+    "prismarine": "prismarine",
+    "prismarine_bricks": "prismarine_brick",
+    "dark_prismarine": "dark_prismarine",
+    "nether_bricks": "nether_brick",
+    "red_nether_bricks": "red_nether_brick",
+    "blackstone": "blackstone",
+    "polished_blackstone": "polished_blackstone",
+    "polished_blackstone_bricks": "polished_blackstone_brick",
+    "end_stone_bricks": "end_stone_brick",
+    "purpur_block": "purpur",
+    "quartz_block": "quartz",
+    "smooth_quartz": "smooth_quartz",
+    "cut_copper": "cut_copper",
+    "exposed_cut_copper": "exposed_cut_copper",
+    "weathered_cut_copper": "weathered_cut_copper",
+    "oxidized_cut_copper": "oxidized_cut_copper",
+    "waxed_cut_copper": "waxed_cut_copper",
+    "waxed_exposed_cut_copper": "waxed_exposed_cut_copper",
+    "waxed_weathered_cut_copper": "waxed_weathered_cut_copper",
+    "waxed_oxidized_cut_copper": "waxed_oxidized_cut_copper",
+    "polished_granite": "polished_granite",
+    "polished_diorite": "polished_diorite",
+    "polished_andesite": "polished_andesite"
+}
+#END
++-------+ +-------+
+| #     | |     # |
+| # #   | |   # # |
+| # # # | | # # # |
++-------+ +-------+
+# = f"minecraft:{i}"
+-> 8x f"minecraft:{n}_stairs"
+: f"{n}_stairs_from_{i}"
+----
+#ITER
+i, r = {
+    "oak_log": "oak_planks",
+    "oak_wood": "oak_planks",
+    "stripped_oak_log": "oak_planks",
+    "stripped_oak_wood": "oak_planks",
+    "spruce_log": "spruce_planks",
+    "spruce_wood": "spruce_planks",
+    "stripped_spruce_log": "spruce_planks",
+    "stripped_spruce_wood": "spruce_planks",
+    "birch_log": "birch_planks",
+    "birch_wood": "birch_planks",
+    "stripped_birch_log": "birch_planks",
+    "stripped_birch_wood": "birch_planks",
+    "jungle_log": "jungle_planks",
+    "jungle_wood": "jungle_planks",
+    "stripped_jungle_log": "jungle_planks",
+    "stripped_jungle_wood": "jungle_planks",
+    "acacia_log": "acacia_planks",
+    "acacia_wood": "acacia_planks",
+    "stripped_acacia_log": "acacia_planks",
+    "stripped_acacia_wood": "acacia_planks",
+    "dark_oak_log": "dark_oak_planks",
+    "dark_oak_wood": "dark_oak_planks",
+    "stripped_dark_oak_log": "dark_oak_planks",
+    "stripped_dark_oak_wood": "dark_oak_planks",
+    "mangrove_log": "mangrove_planks",
+    "mangrove_wood": "mangrove_planks",
+    "stripped_mangrove_log": "mangrove_planks",
+    "stripped_mangrove_wood": "mangrove_planks",
+    "cherry_log": "cherry_planks",
+    "cherry_wood": "cherry_planks",
+    "stripped_cherry_log": "cherry_planks",
+    "stripped_cherry_wood": "cherry_planks",
+    "bamboo_block": "bamboo_planks",
+    "stripped_bamboo_block": "bamboo_planks",
+    "crimson_log": "crimson_planks",
+    "crimson_wood": "crimson_planks",
+    "stripped_crimson_log": "crimson_planks",
+    "stripped_crimson_wood": "crimson_planks",
+    "warped_log": "warped_planks",
+    "warped_wood": "warped_planks",
+    "stripped_warped_log": "warped_planks",
+    "stripped_warped_wood": "warped_planks"
+}
+#END
+> f"minecraft:{i}"
+-> 1x f"minecraft:{r}"
+: f"{r}_from_{i}"
+----
+#ITER
+t, b = {
+    "oak_planks": "oak",
+    "spruce_planks": "spruce",
+    "birch_planks": "birch",
+    "jungle_planks": "jungle",
+    "acacia_planks": "acacia",
+    "dark_oak_planks": "dark_oak",
+    "mangrove_planks": "mangrove",
+    "cherry_planks": "cherry",
+    "bamboo_planks": "bamboo",
+    "crimson_planks": "crimson",
+    "warped_planks": "warped",
+    "stone": "stone"
+}
+#END
+> f"minecraft:{t}"
+-> 64x f"minecraft:{b}_button"
+: f"{b}_button"
+----
++---+
+| # |
+| # |
++---+
+# #= "minecraft:planks"
+-> 64x "minecraft:stick"
+: "sticks"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
+#DISABLE
+f"{t}_door"
+f"{t}_trapdoor"
+f"{t}_fence"
+f"{t}_fence_gate"
+f"{t}_pressure_plate"
+f"{t}_button"
+f"{t}_planks"
+f"{t}_sign"
+f"{t}_hanging_sign"
+f"{t}_wood"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-----+
+| # # |
++-----+
+# = f"minecraft:{t}_planks"
+-> 41x f"minecraft:{t}_pressure_plate"
+: f"{t}_pressure_plate"
+----
++-----+
+| # # |
+| # # |
++-----+
+# #= "minecraft:planks"
+-> 4x "minecraft:crafting_table"
+: "crafting_table"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-------+
+| # # # |
+| # # # |
++-------+
+# = f"minecraft:{t}_planks"
+-> 32x f"minecraft:{t}_trapdoor"
+: f"{t}_trapdoor"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-----+
+| # # |
+| # # |
+| # # |
++-----+
+# = f"minecraft:{t}_planks"
+-> 16x f"minecraft:{t}_door"
+: f"{t}_door"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-------+
+| / # / |
+| / # / |
++-------+
+# = f"minecraft:{t}_planks"
+/ = "minecraft:stick"
+-> 23x f"minecraft:{t}_fence_gate"
+: f"{t}_fence_gate"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-------+
+| # / # |
+| # / # |
++-------+
+# = f"minecraft:{t}_planks"
+/ = "minecraft:stick"
+-> 41x f"minecraft:{t}_fence"
+: f"{t}_fence"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-------+
+| # # # |
+| # # # |
+|   /   |
++-------+
+# = f"minecraft:{t}_planks"
+/ = "minecraft:stick"
+-> 16x f"minecraft:{t}_sign"
+: f"{t}_sign"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-----+
+| # # |
+| # # |
++-----+
+# = f"minecraft:{t}_log"
+-> 4x f"minecraft:{t}_wood"
+: f"{t}_wood"
+----
++-------+
+| # # # |
+| #   # |
+| # # # |
++-------+
+# #= "minecraft:planks"
+-> 32x "minecraft:chest"
+: "chest"
+----
++-------+
+| # _ # |
+| #   # |
+| # _ # |
++-------+
+# #= "minecraft:planks"
+_ #= "minecraft:wooden_slabs"
+-> 21x "minecraft:barrel"
+: "barrel"
+----
++-------+
+| # # # |
+| _ _ _ |
+| # # # |
++-------+
+# #= "minecraft:planks"
+_ #= "minecraft:wooden_slabs"
+-> 21x "minecraft:chiseled_bookshelf"
+: "chiseled_bookshelf"
+----
++-----+
+| o o |
+| # # |
++-----+
+# #= "minecraft:planks"
+o = "minecraft:string"
+-> 2x "minecraft:loom"
+: "loom"
+----
++-----+
+| ^ ^ |
+| # # |
+| # # |
++-----+
+# #= "minecraft:planks"
+^ = "minecraft:flint"
+-> 4x "minecraft:fletching_table"
+: "fletching_table"
+----
++-----+
+| ^ ^ |
+| # # |
+| # # |
++-----+
+# #= "minecraft:planks"
+^ = "minecraft:iron_ingot"
+-> 4x "minecraft:smithing_table"
+: "smithing_table"
+----
++-----+
+| ^ ^ |
+| # # |
+| # # |
++-----+
+# #= "minecraft:planks"
+^ = "minecraft:paper"
+-> 4x "minecraft:cartography_table"
+: "cartography_table"
+----
++-------+
+|   #   |
+| # H # |
+|   #   |
++-------+
+# #= "minecraft:logs"
+H = "minecraft:furnace"
+-> 5x "minecraft:smoker"
+: "smoker"
+----
++-------+
+| i i i |
+| i f i |
+| s s s |
++-------+
+i = "minecraft:iron_ingot"
+f = "minecraft:furnace"
+s = "minecraft:smooth_stone"
+-> 4x "minecraft:blast_furnace"
+: "blast_furnace"
+----
+#ITER
+c = [
+    "coal",
+    "charcoal"
+]
+#END
++-------+
+|   /   |
+| / c / |
+| l l l |
++-------+
+l #= "minecraft:logs"
+c = f"minecraft:{c}"
+/ = "minecraft:stick"
+-> 12x "minecraft:campfire"
+: "campfire"
+----
+#ITER
+t = [
+    "oak",
+    "spruce",
+    "birch",
+    "jungle",
+    "acacia",
+    "dark_oak",
+    "mangrove",
+    "cherry",
+    "bamboo",
+    "crimson",
+    "warped"
+]
+#END
++-------+
+| |   | |
+| # # # |
+| # # # |
++-------+
+| = "minecraft:chain"
+# = f"minecraft:stripped_{t}_log"
+-> 16x f"minecraft:{t}_hanging_sign"
+: f"{t}_hanging_sign"
+----
++-------+
+| # # # |
+| b b b |
+| # # # |
++-------+
+# #= "minecraft:planks"
+b = "minecraft:book"
+-> 6x "minecraft:bookshelf"
+: "bookshelf"
+----
++-------+
+| /   / |
+| / / / |
+| /   / |
++-------+
+/ = "minecraft:stick"
+-> 1x "minecraft:ladder"
+: "ladder"
+----
++-------+
+| / _ / |
+| #   # |
++-------+
+/ = "minecraft:stick"
+# #= "minecraft:planks"
+_ = "minecraft:stone_slab"
+-> 7x "minecraft:grindstone"
+: "grindstone"
+----
++-------+
+| _   _ |
+| _   _ |
+| _ _ _ |
++-------+
+_ #= "minecraft:wooden_slabs"
+-> 6x "minecraft:composter"
+: "composter"
+----
++-------+
+| g g g |
+| q q q |
+| _ _ _ |
++-------+
+g = "minecraft:glass"
+q = "minecraft:quartz"
+_ #= "minecraft:wooden_slabs"
+-> 4x "minecraft:daylight_detector"
+: "daylight_detector"
+----
+#ITER
+i, p = {
+    "iron_ingot": "heavy_weighted_pressure_plate",
+    "gold_ingot": "light_weighted_pressure_plate"
+}
+#END
++-----+
+| # # |
++-----+
+# = f"minecraft:{i}"
+-> 4x f"minecraft:{p}"
+: f"{p}"
+----
++-----+
+| # # |
++-----+
+# = f"minecraft:stone"
+-> 41x f"minecraft:stone_pressure_plate"
+: f"stone_pressure_plate"
+----
+#DISABLE
+"lever"
+"torch"
+"redstone_torch"
+"soul_torch"
+----
++---+
+| / |
+| # |
++---+
+/ = "minecraft:stick"
+# #= f"minecraft:stone_crafting_materials"
+-> 24x "minecraft:lever"
+: "lever"
+----
++---+
+| c |
+| / |
++---+
+c #= "minecraft:coals"
+/ = "minecraft:stick"
+-> 12x f"minecraft:torch"
+: "torch"
+----
++---+
+| c |
+| / |
++---+
+c #= "minecraft:redstone"
+/ = "minecraft:stick"
+-> 12x f"minecraft:redstone_torch"
+: "redstone_torch"
+----
++---+
+| c |
+| / |
+| # |
++---+
+c #= "minecraft:coals"
+/ = "minecraft:stick"
+# #= "minecraft:soul_fire_base_blocks"
+-> 64x f"minecraft:soul_torch"
+: "soul_torch"
+----
++-------+
+| c c c |
+| g g g |
+| c c c |
++-------+
+g = "minecraft:glowstone"
+c = "minecraft:crying_obsidian"
+-> 9x "minecraft:respawn_anchor"
+: "respawn_anchor"
+----
++-------+
+| # # # |
+| # o # |
+| # # # |
++-------+
+o = "minecraft:ender_eye"
+# = "minecraft:obsidian"
+-> 32x "minecraft:ender_chest"
+: "ender_chest"
+----
++-------+
+| # # # |
+| # o # |
+| # # # |
++-------+
+# = "minecraft:chiseled_stone_bricks"
+o = "minecraft:netherite_ingot"
+-> 8x "minecraft:lodestone"
+: "lodestone"
+----
++-------+
+| # # # |
+| #   # |
+| # # # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+-> 8x "minecraft:furnace"
+: "furnace"
+----
++-------+
+|   o   |
+| # # # |
++-------+
+# = "minecraft:stone"
+o = "minecraft:iron_ingot"
+-> 5x "minecraft:stonecutter"
+: "stonecutter"
+----
+#ITER
+c = [
+    "white",
+    "light_gray",
+    "gray",
+    "black",
+    "brown",
+    "red",
+    "orange",
+    "yellow",
+    "lime",
+    "green",
+    "cyan",
+    "light_blue",
+    "blue",
+    "purple",
+    "magenta",
+    "pink"
+]
+#END
++-------+
+| w w w |
+| # # # |
++-------+
+w = f"minecraft:{c}_wool"
+# #= "minecraft:planks"
+-> 6x f"minecraft:{c}_bed"
+: f"{c}_bed"
+----
++-------+
+| _ _ _ |
+|   #   |
+|   _   |
++-------+
+_ #= "minecraft:wooden_slabs"
+# = "minecraft:bookshelf"
+-> 5x "minecraft:lectern"
+: "lectern"
+----
++-------+
+| # # # |
+| # ^ # |
+| # # # |
++-------+
+# #= "minecraft:planks"
+^ = "minecraft:diamond"
+-> 8x "minecraft:jukebox"
+: "jukebox"
+----
++-------+
+| # # # |
+| # ^ # |
+| # # # |
++-------+
+# #= "minecraft:planks"
+^ = "minecraft:redstone"
+-> 8x "minecraft:note_block"
+: "note_block"
+----
++-------+
+| # # # |
+| @ @ @ |
+| # # # |
++-------+
+# #= "minecraft:planks"
+@ = "minecraft:honeycomb"
+-> 6x "minecraft:beehive"
+: "beehive"
+----
++-------+
+| i i i |
+| i i i |
++-------+
+i = "minecraft:iron_ingot"
+-> 5x "minecraft:iron_bars"
+: "iron_bars"
+----
+#ITER
+b = [
+    "cobblestone",
+    "stone_bricks"
+]
+#END
+> "minecraft:moss_block"
+> f"minecraft:{b}"
+-> 2x f"minecraft:mossy_{b}"
+: f"mossy_{b}"
+----
++---+
+| . |
+| i |
+| . |
++---+
+. = "minecraft:iron_nugget"
+i = "minecraft:iron_ingot"
+-> 3x "minecraft:chain"
+: "chain"
+----
++---+
+| i |
+| / |
+| # |
++---+
+i = "minecraft:iron_ingot"
+/ = "minecraft:stick"
+# #= "minecraft:planks"
+-> 39x "minecraft:tripwire_hook"
+: "tripwire_hook"
+----
++-------+
+| ^ # ^ |
+| # ^ # |
+| ^ # ^ |
++-------+
+# #= "minecraft:sand"
+^ = "minecraft:gunpowder"
+-> 4x "minecraft:tnt"
+: "tnt"
+----
++-----+
+| i i |
+| i i |
++-----+
+i = "minecraft:iron_ingot"
+-> 2x "minecraft:iron_trapdoor"
+: "iron_trapdoor"
+----
++-----+
+| i i |
+| i i |
+| i i |
++-----+
+i = "minecraft:iron_ingot"
+-> 1x "minecraft:iron_door"
+: "iron_door"
+----
++-------+
+| i / i |
+| i | i |
+| i / i |
++-------+
+i = "minecraft:iron_ingot"
+/ = "minecraft:stick"
+| = "minecraft:redstone_torch"
+-> 18x "minecraft:activator_rail"
+: "activator_rail"
+----
++-------+
+| i   i |
+| i / i |
+| i   i |
++-------+
+i = "minecraft:iron_ingot"
+/ = "minecraft:stick"
+-> 19x "minecraft:rail"
+: "rail"
+----
++-------+
+| i   i |
+| i / i |
+| i ^ i |
++-------+
+i = "minecraft:gold_ingot"
+/ = "minecraft:stick"
+^ = "minecraft:redstone"
+-> 20x "minecraft:powered_rail"
+: "powered_rail"
+----
++-------+
+| i   i |
+| i _ i |
+| i ^ i |
++-------+
+i = "minecraft:iron_ingot"
+^ = "minecraft:redstone"
+_ = "minecraft:stone_pressure_plate"
+-> 21x "minecraft:detector_rail"
+: "detector_rail"
+----
++-------+
+| # # # |
+| ^ ^ q |
+| # # # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+q = "minecraft:quartz"
+-> 6x "minecraft:observer"
+: "observer"
+----
++-------+
+| i   i |
+| i # i |
+|   i   |
++-------+
+i = "minecraft:iron_ingot"
+# = "minecraft:chest"
+-> 5x "minecraft:hopper"
+: "hopper"
+----
++-------+
+| % % % |
+| # i # |
+| # ^ # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+% #= "minecraft:planks"
+i = "minecraft:iron_ingot"
+-> 7x "minecraft:piston"
+: "piston"
+----
++-------+
+| # # # |
+| #   # |
+| # ^ # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+-> 7x "minecraft:dropper"
+: "dropper"
+----
++-------+
+| # # # |
+| # % # |
+| # ^ # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+% = "minecraft:bow"
+-> 7x "minecraft:dispenser"
+: "dispenser"

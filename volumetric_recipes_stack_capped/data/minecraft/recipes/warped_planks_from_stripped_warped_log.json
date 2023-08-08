@@ -1,0 +1,12 @@
+{
+    "type": "crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:stripped_warped_log"
+        }
+    ],
+    "result": {
+        "item": "minecraft:warped_planks",
+        "count": 1
+    }
+}

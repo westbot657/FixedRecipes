@@ -1,5 +1,6 @@
 # pylint: disable=[W,R,C,import-error]
 
+from shutil import make_archive
 import re, json, os
 
 class DisableRecipe:
@@ -141,9 +142,10 @@ class RecipeParser:
             with open(f"./{self.name}/data/minecraft/recipes/{disabled}.json", "w+", encoding="utf-8") as f:
                 f.write("{}")
         
-
         for recipe in self.recipes:
             recipe.generate(self.name)
+
+        make_archive(f"{self.name}", "zip", root_dir=f"./{self.name}")
 
     def parse(self, file_name:str):
         with open(file_name, "r+", encoding="utf-8") as f:
@@ -364,14 +366,34 @@ class RecipeParser:
                 p += 1
 
 
+import glob
+
 if __name__ == "__main__":
-    recipeParser = RecipeParser()
 
-    recipeParser.parse("visual_recipes.txt")
+    files = glob.glob("generate/*.txt")
 
-    recipeParser.generate()
+    for fn in files:
 
-    print(recipeParser)
+        recipeParser = RecipeParser()
+
+        recipeParser.parse(fn)
+
+        try:
+            recipeParser.generate()
+        except FileExistsError:
+            print("Folder with this name already exists")
+
+        print(recipeParser)
+
+        with open(fn, "r+", encoding="utf-8") as f:
+            dat = f.read()
+        
+        with open(fn.replace("generate\\", ""), "w+", encoding="utf-8") as f:
+            f.write(dat)
+
+        os.remove(f"./{fn}")
+        (f"./{fn}")
+
 
 
 

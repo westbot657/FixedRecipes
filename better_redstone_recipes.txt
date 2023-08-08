@@ -1,0 +1,62 @@
+== better_redstone_recipes ==
+// Better recipes for redstone to allow deepslate and blackstone in recipes //
+f-15
+----
++-------+
+| _ _ _ |
+| # / # |
+| # ^ # |
++-------+
+_ #= "minecraft:planks"
+# #= "minecraft:stone_crafting_materials"
+/ = "minecraft:iron_ingot"
+^ = "minecraft:redstone"
+-> 1x "minecraft:piston"
+: "piston"
+
+----
+
++-------+
+| # # # |
+| #   # |
+| # ^ # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+-> 1x "minecraft:dropper"
+: "dropper"
+
+----
+
++-------+
+| # # # |
+| # / # |
+| # ^ # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+/ = "minecraft:bow"
+-> 1x "minecraft:dispenser"
+: "dispenser"
+
+----
+
++-------+
+| # # # |
+| ^ ^ / |
+| # # # |
++-------+
+# #= "minecraft:stone_crafting_materials"
+^ = "minecraft:redstone"
+/ = "minecraft:quartz"
+-> 1x "minecraft:observer"
+: "observer"
+
+----
+
+
+
+
+
+
+

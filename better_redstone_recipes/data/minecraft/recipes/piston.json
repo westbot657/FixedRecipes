@@ -1,0 +1,26 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "___",
+        "#/#",
+        "#^#"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:iron_ingot"
+        },
+        "^": {
+            "item": "minecraft:redstone"
+        },
+        "_": {
+            "tag": "minecraft:planks"
+        },
+        "#": {
+            "tag": "minecraft:stone_crafting_materials"
+        }
+    },
+    "result": {
+        "item": "minecraft:piston",
+        "count": 1
+    }
+}

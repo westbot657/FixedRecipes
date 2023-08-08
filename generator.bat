@@ -1,0 +1,1 @@
+start "" py ./recipe_generator.py
