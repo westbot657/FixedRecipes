@@ -54,9 +54,15 @@ _ #= "minecraft:planks"
 
 ----
 
++---+
+| / |
+| # |
++---+
+# #= "minecraft:stone_crafting_materials"
+/ = "minecraft:stick"
+-> 1x "minecraft:lever"
+: "lever"
 
-
-
-
+----
 
 
