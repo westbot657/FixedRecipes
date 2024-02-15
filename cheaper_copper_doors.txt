@@ -1,0 +1,45 @@
+== cheaper_copper_doors_and_trapdoors ==
+// Cheaper recipes for copper door and trapdoor //
+f-32
+----
+#ITER
+t = [
+    "",
+    "exposed_",
+    "weathered_",
+    "oxidized_",
+    "waxed_",
+    "waxed_exposed_",
+    "waxed_weathered_",
+    "waxed_oxidized_"
+]
+#END
++-------+
+| / / / |
+| / / / |
++-------+
+/ = f"minecraft:{t}cut_copper"
+-> 2x f"minecraft:{t}copper_trapdoor"
+: f"{t}copper_trapdoor"
+----
+#ITER
+t = [
+    "",
+    "exposed_",
+    "weathered_",
+    "oxidized_",
+    "waxed_",
+    "waxed_exposed_",
+    "waxed_weathered_",
+    "waxed_oxidized_"
+]
+#END
++-----+
+| / / |
+| / / |
+| / / |
++-----+
+/ = f"minecraft:{t}cut_copper"
+-> 2x f"minecraft:{t}copper_door"
+: f"{t}copper_door"
+----

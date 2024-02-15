@@ -1,0 +1,17 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "//",
+        "//",
+        "//"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:waxed_exposed_cut_copper"
+        }
+    },
+    "result": {
+        "item": "minecraft:waxed_exposed_copper_door",
+        "count": 2
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "type": "crafting_shaped",
+    "pattern": [
+        "//",
+        "//",
+        "//"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:cut_copper"
+        }
+    },
+    "result": {
+        "item": "minecraft:copper_door",
+        "count": 2
+    }
+}
